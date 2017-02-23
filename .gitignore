@@ -1,1 +1,5 @@
 target
+/nbproject/
+.DS_Store
+/build
+/dist

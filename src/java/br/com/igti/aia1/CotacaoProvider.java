@@ -1,4 +1,4 @@
-package br.com.igit.aia1;
+package br.com.igti.aia1;
 
 import java.text.DecimalFormat;
 import java.util.Properties;

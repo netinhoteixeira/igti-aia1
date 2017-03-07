@@ -49,7 +49,7 @@ public class CotacaoProvider {
         try {
             ctx = new InitialContext(props);
         } catch (NamingException ne) {
-            System.err.println("FalhaaocriarInitialContext.");
+            System.err.println("Falha ao criar InitialContext.");
             System.err.println("O Context.PROVIDER_URLespecificado: " + url);
             System.err.println("\nDetalhes da exceção:");
             ne.printStackTrace();
@@ -61,14 +61,14 @@ public class CotacaoProvider {
             cf = (javax.jms.ConnectionFactory) ctx.lookup(MYCF_LOOKUP_NAME);
             System.out.println("Connection Factory encontrado.");
         } catch (NamingException ne) {
-            System.err.println("Falhou a pesquisapara o objeto Connection Factory.");
+            System.err.println("Falhou a pesquisa para o objeto Connection Factory.");
             System.err.println("\nDetalhes da exceção:");
             ne.printStackTrace();
             System.exit(-1);
         }
 
         try {
-            System.out.println("Pesquisandoobjeto de filacom o nome:" + MYQUEUE_LOOKUP_NAME);
+            System.out.println("Pesquisand o objeto de fila com o nome: " + MYQUEUE_LOOKUP_NAME);
             queue = (javax.jms.Queue) ctx.lookup(MYQUEUE_LOOKUP_NAME);
             System.out.println("Objeto Queue encontrado.");
         } catch (NamingException ne) {
@@ -81,7 +81,7 @@ public class CotacaoProvider {
         try {
             System.out.println("Criando conexão com o broker");
             connection = cf.createConnection();
-            System.out.println("Conexão com o broker foicriada.");
+            System.out.println("Conexão com o broker foi criada.");
         } catch (JMSException e) {
             System.err.println("Falhou a criação com o broker.");
             System.err.println("\nDetalhes da exceção:");
@@ -91,7 +91,8 @@ public class CotacaoProvider {
 
         try {
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            // Create the MessageProducer and MessageConsumer msgProducer = session.createProducer(queue);
+            // Create the MessageProducer and MessageConsumer
+            msgProducer = session.createProducer(queue);
             // Tell the provider to start sending messages. connection.start();
             Double valor = 12.45;
 
